@@ -84,16 +84,16 @@ public class ImplementacaoBD {
    
         Integer control = 0;
         for (String s : valoresSelectstring) {
-            if (control % 2 == 0) { // o primeiro,terceiro,quinto... argumentos do arquivo 1
-                if (Integer.valueOf(s) > arquivo1.get(0).size()) { // se o valor do argumento é maior que o numero de colunas do arquivo1
+            if (control % 2 == 0) { // o primeiro,terceiro,quinto... select do arquivo 1
+                if (Integer.valueOf(s) > arquivo1.get(0).size()) { // se o valor do select é maior que o numero de colunas do arquivo1
                    
                     System.out.println("ERRO: Coluna select maior que o possivel");
                     return;
                 }else
                     valoresSelectintarq1.add(Integer.valueOf(s));
             }
-            if (control % 2 == 1) { // o segundo,quarto,sexto... argumentos do arquivo 2
-                if (Integer.valueOf(s) > arquivo2.get(0).size()) { //se o valor do argumento é maior que o numero de colunas do arquivo2
+            if (control % 2 == 1) { // o segundo,quarto,sexto... select do arquivo 2
+                if (Integer.valueOf(s) > arquivo2.get(0).size()) { //se o valor do select é maior que o numero de colunas do arquivo2
                     System.out.println("ERRO: Coluna select maior que o possivel");
                     return;
                 }else

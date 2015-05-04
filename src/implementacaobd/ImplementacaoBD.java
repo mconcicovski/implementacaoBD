@@ -79,17 +79,19 @@ public class ImplementacaoBD {
         for (String s : arquivo2Linhas) {
             arquivo2.add(Arrays.asList(s.split(","))); // pega cada linha do arquvo 2 e coloca em uma lista de string, cada string equivale a 1 coluna
         }
+        // arquivo1 e arquivo2 estao armazenados toda os arquivos em forma de matriz, para acessar arquivo1.get(linha).get(coluna) retorna a string
+   
         Integer control = 0;
         for (String s : valoresSelectstring) {
             valoresSelectint.add(Integer.valueOf(s));
-            if (control % 2 == 0) {
-                if (Integer.valueOf(s) > arquivo1.get(0).size()) {
+            if (control % 2 == 0) { // o primeiro,terceiro,quinto... argumentos do arquivo 1
+                if (Integer.valueOf(s) > arquivo1.get(0).size()) { // se o valor do argumento é maior que o numero de colunas do arquivo1
                     System.out.println("ERRO: Coluna select maior que o possivel");
                     return;
                 }
             }
-            if (control % 2 == 1) {
-                if (Integer.valueOf(s) > arquivo2.get(0).size()) {
+            if (control % 2 == 1) { // o segundo,quarto,sexto... argumentos do arquivo 2
+                if (Integer.valueOf(s) > arquivo2.get(0).size()) { //se o valor do argumento é maior que o numero de colunas do arquivo2
                     System.out.println("ERRO: Coluna select maior que o possivel");
                     return;
                 }
@@ -98,11 +100,11 @@ public class ImplementacaoBD {
         }
         Integer on1 = Integer.valueOf(matcher.group(7));
         Integer on2 = Integer.valueOf(matcher.group(8));
-        if (on1 > arquivo1.get(0).size()) {
+        if (on1 > arquivo1.get(0).size()) { // vai testar se o primeiro valor do ON é maior que o numero de colunas do arquivo1
             System.out.println("ERRO: ON com coluna maior que o possivel no arquvo 1");
             return;
         }
-        if (on2 > arquivo2.get(0).size()) {
+        if (on2 > arquivo2.get(0).size()) { // vai testar se o primeiro valor do ON é maior que o numero de colunas do arquivo2
             System.out.println("ERRO: ON com coluna maior que o possivel no arquvo 2");
             return;
         }

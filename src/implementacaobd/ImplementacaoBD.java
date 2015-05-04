@@ -59,7 +59,8 @@ public class ImplementacaoBD {
         // matcher.group(8) = nome do segundo argumento do ON
         String valoresCSV = matcher.group(1);
         String[] valoresSelectstring = valoresCSV.split(",");
-        List<Integer> valoresSelectint = new ArrayList<Integer>();
+        List<Integer> valoresSelectintarq1 = new ArrayList<Integer>();
+         List<Integer> valoresSelectintarq2 = new ArrayList<Integer>();
         List<String> arquivo1Linhas = new ArrayList<String>();
         List<String> arquivo2Linhas = new ArrayList<String>();
         try {
@@ -83,18 +84,20 @@ public class ImplementacaoBD {
    
         Integer control = 0;
         for (String s : valoresSelectstring) {
-            valoresSelectint.add(Integer.valueOf(s));
             if (control % 2 == 0) { // o primeiro,terceiro,quinto... argumentos do arquivo 1
                 if (Integer.valueOf(s) > arquivo1.get(0).size()) { // se o valor do argumento é maior que o numero de colunas do arquivo1
+                   
                     System.out.println("ERRO: Coluna select maior que o possivel");
                     return;
-                }
+                }else
+                    valoresSelectintarq1.add(Integer.valueOf(s));
             }
             if (control % 2 == 1) { // o segundo,quarto,sexto... argumentos do arquivo 2
                 if (Integer.valueOf(s) > arquivo2.get(0).size()) { //se o valor do argumento é maior que o numero de colunas do arquivo2
                     System.out.println("ERRO: Coluna select maior que o possivel");
                     return;
-                }
+                }else
+                     valoresSelectintarq2.add(Integer.valueOf(s));
             }
             control++;
         }
@@ -108,7 +111,20 @@ public class ImplementacaoBD {
             System.out.println("ERRO: ON com coluna maior que o possivel no arquvo 2");
             return;
         }
-
+        
+        for(List<String> arq1 : arquivo1)
+        {
+            for(List<String> arq2 : arquivo2)
+            { 
+                if(arq1.get(on1-1).equals(arq2.get(on2-1)))
+                {
+                    for (Integer i : valoresSelectintarq1)
+                        System.out.println(arq1.get(i-1)+" ");
+                    for (Integer i : valoresSelectintarq2)
+                        System.out.println(arq2.get(i-1)+" ");  
+                }
+            }
+        }
     }
 
 }

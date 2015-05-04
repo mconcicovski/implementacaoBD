@@ -1,4 +1,0 @@
-1, joao lima, 2001, 15, engenharia
-2, ze, 1990, 5, computacao
-4, ana maria, 2004, 10, matematica
-7, pedro souza, 2010, 10, engenharia
